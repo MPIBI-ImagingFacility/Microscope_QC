@@ -2,7 +2,9 @@
 """
 Created on Fri Feb 14 09:13:01 2025
 
-Code for QC
+After following the Leica_Confocal_QC_Protocol, this script can be used to make
+plots summarizing the collected data. 
+Requires "QC_functions.py"
 
 @author: dpaynter
 """
@@ -12,14 +14,12 @@ import QC_functions as qcf
 import tkinter as tk
 from tkinter.filedialog import askopenfilename
 tk.Tk().withdraw() # part of the import if you are not using other tkinter functions
-from pathlib import Path
 
 ############################################################
 ############################################################
 
 # Input the path to QC folder for a particular date:
 qc_path = r"J:\Equipment\Microscopes\Imaging Facility\Leica_SP8_Matrix_N132\QualityControl\250305"
-
 
 qc_folder = os.path.dirname(qc_path)
 date_ = qc_path.split("\\")[-1]

@@ -2,7 +2,11 @@
 """
 Created on Fri Aug 22 11:59:30 2025
 
-Contains functions useful for analyzing data collected for quality control purposes.
+Contains functions for analyzing data collected for quality control purposes.
+Functions are implemented in scripts:
+QC_plots_Leica.py
+QC_plots_Nikon.py
+QC_plots_Zeiss.py
 
 @author: dpaynter
 """
@@ -23,20 +27,16 @@ import multipagetiff as mtif
 import matplotlib
 import tkinter as tk
 from tkinter.filedialog import askopenfilename
-tk.Tk().withdraw() # part of the import if you are not using other tkinter functions
+tk.Tk().withdraw()
 import tifffile
 from pathlib import Path
 import matplotlib.colors as mcolors
 import glob
 
-
-
 ### Presets and hardcoded things:
 # palette is used for assigning colors to laser power plots. If using a laser not listed here, simply add it to the list and copy/paste a color name to use for it.
 palette = {'405': 'black', '442': 'deepskyblue', '445': 'deepskyblue','448': 'deepskyblue', 'Argon_488': 'limegreen', 'OPSL_488': 'limegreen', 'WLL_485':'limegreen','488': 'limegreen', 'Argon_514':'gold','Argon_561':'pink', '633':'darkred', '561':'red', 'Argon_458':'aquamarine',
            'WLL_488':'limegreen', 'WLL_514':'gold', '514':'gold','515':'gold', 'WLL_561':'red', 'WLL_594':'lightsalmon', 'WLL_633':'palevioletred', '638':'palevioletred','WLL_640':'firebrick','640':'firebrick', 'WLL_670':'maroon', 'WLL_685':'maroon', '730':'maroon'}
-
-
 
 # settings for retaining pdf font
 matplotlib.rcParams['pdf.fonttype'] = 42
@@ -437,13 +437,15 @@ def plot_detector_darknoise_leica(filepath=None):
         plt.close()
         
 def plot_detector_darknoise_tif(filepath=None):
-    
-    """Function is used to plot "darknoise" images from PMTs and HyDs.
+    """
+    Function is used to plot "darknoise" images from PMTs and HyDs.
     Currently very hard-coded to take files from Leica confocals, where each 
     channel is a different detector, and the order of acquisition matters (i.e., 
     detector names are not read in from metadata, but are assumed).
     Filepath should be something like: r"J:\\Equipment\\Microscopes\\Imaging Facility\\Leica_SP8_N131\\QualityControl\\250321\\detector_darknoise.lif" 
-    Function saves a PNG plotting the dark noise level for each detector."""
+    Function saves a PNG plotting the dark noise level for each detector.
+    """
+    
     if filepath == None:
         filepath = askopenfilename()
     
@@ -499,14 +501,16 @@ def plot_detector_darknoise_tif(filepath=None):
         plt.show()
         plt.close()
 
-def plot_camera_darknoise(filepath, exposure_times=None, save_csv=True, microscope=None, date=None):
+def plot_camera_darknoise(filepath=None, exposure_times=None, save_csv=True, microscope=None, date=None):
     """
     Function analyzes dark noise data acquired with cameras at Nikon systems (.nd2) files.
     Input should be a path to a (multichannel, single plane) ND2 file. The name of the "channel"
     will be taken from the Optical Configuration (OC). MPI-BI Spinning Disk has OCs corresponding to 
     various exposure times used to make this QC measurement.
     """
-    
+    if filepath == None:
+        filepath = askopenfilename()
+        
     if microscope == None:
         microscope = input("Enter name of microscope:  ")
     if date==None:
@@ -725,7 +729,7 @@ def plot_gain_lin_leica(gain_lif_path=None, hyd_gains=None, pmt_gains=None, micr
             chan_means.append(mean_val)
 
         chan_means = np.array(chan_means)
-
+        print(chan_means)
         # Log transform PMTs only
         if not is_hyd:
             chan_means = np.log(chan_means)
@@ -753,7 +757,7 @@ def plot_gain_lin_leica(gain_lif_path=None, hyd_gains=None, pmt_gains=None, micr
 
     fig.suptitle(f"Gain linearity for {microscope} on {date}")
     fig.supxlabel("Gain (PMTs: V; HyDs: %)")
-    fig.supylabel("Mean Intensity (HyD)\nlog(Mean Intensity) (PMT)", fontsize=14, x=0.07)
+    fig.supylabel("Mean Intensity (HyD)\nlog(Mean Intensity) (PMT)", fontsize=14, x=0.04)
     #plt.tight_layout()
     savepath = os.path.join(qc_path, 'detector_gain_linearity.png')
     plt.savefig(savepath)
@@ -930,8 +934,6 @@ def plot_gain_lin_overtime(qc_folder_path):
         plt.show()
 
     return all_data   
-
-    
 
     
 def plot_field_illum(filepath=None, microscope=None, date=None):

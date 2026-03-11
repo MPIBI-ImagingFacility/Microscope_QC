@@ -1,0 +1,12 @@
+numpy>=1.25
+pandas>=2.0
+scipy>=1.11
+matplotlib>=3.7
+seaborn>=0.12
+scikit-image>=0.22
+tifffile>=2024.1
+
+opencv-python>=4.8
+nd2reader>=3.3
+readlif>=0.6
+multipagetiff>=3.0
