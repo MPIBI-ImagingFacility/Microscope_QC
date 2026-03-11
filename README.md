@@ -2,7 +2,11 @@
 
 Protocol and Python scripts for quality control analysis at MPI-BI microscopes. 
 
+For questions, comments, and suggestions, please reach out to: imaging@bi.mpg.de
+
 ## Protocols
+
+The protocols in this repository are written specifically for the microscopes at MPI-BI, but may be adapted for use elsewhere.
 
 ## Analysis
 
@@ -21,6 +25,7 @@ Run the script containing functions for analysis:
 python QC_functions.py
 
 Open the "QC_plots_xxx" file corresponding to the protocol used (currently: Leica, Zeiss, or Nikon)
+
 Edit the line below to match the path to a specific date's data:
 
 #Input the path to QC folder for a particular date:
