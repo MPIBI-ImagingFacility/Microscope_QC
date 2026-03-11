@@ -1,2 +1,18 @@
 # Microscope_QC
-Scripts and functions for use in processing, analyzing, and plotting microscope quality control data collected periodically at MPI-BI. Primarily applies to confocal microscopes.
+
+Protocol and Python scripts for quality control analysis at MPI-BI microscopes. 
+
+## Protocols
+
+## Analysis
+
+### Installation
+
+### Usage
+
+### Requirements
+Tested with:
+
+Python 3.11–3.12
+
+Dependencies are listed in requirements.txt.
