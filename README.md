@@ -10,7 +10,9 @@ Protocol and Python scripts for quality control analysis at MPI-BI microscopes.
 Clone the repository and install dependencies:
 
 git clone https://github.com/MPIBI-ImagingFacility/Microscope_QC.git
+
 cd microscope_qc
+
 pip install -r requirements.txt
 
 ### Usage
