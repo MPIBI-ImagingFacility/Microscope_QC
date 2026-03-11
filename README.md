@@ -20,6 +20,7 @@ python QC_functions.py
 
 Open the "QC_plots_xxx" file corresponding to the protocol used (currently: Leica, Zeiss, or Nikon)
 Edit the line below to match the path to a specific date's data:
+
 #Input the path to QC folder for a particular date:
 qc_path = r"C:\Microscopes\QualityControl\251217"
 
