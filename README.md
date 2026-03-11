@@ -7,6 +7,13 @@ For questions, comments, and suggestions, please reach out to: imaging@bi.mpg.de
 ## Protocols
 
 The protocols in this repository are written specifically for the microscopes at MPI-BI, but may be adapted for use elsewhere.
+Currently, protocols are for:
+
+Leica: STELLARIS 5, SP8 confocals
+
+Zeiss: LSM900 confocal
+
+Nikon: CSU-W1 SoRa spinning disk
 
 ## Analysis
 
