@@ -1,6 +1,6 @@
 # Microscope_QC
 
-Protocol and Python scripts for quality control analysis at MPI-BI microscopes. 
+Protocols and Python scripts for quality control analysis at MPI-BI microscopes. 
 
 For questions, comments, and suggestions, please reach out to: imaging@bi.mpg.de
 
