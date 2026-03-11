@@ -22,6 +22,7 @@ Open the "QC_plots_xxx" file corresponding to the protocol used (currently: Leic
 Edit the line below to match the path to a specific date's data:
 
 #Input the path to QC folder for a particular date:
+
 qc_path = r"C:\Microscopes\QualityControl\251217"
 
 Run the code. It will save plots to the qc_path (single time point measures) as well as to the directory above (comparing measurements over time).
