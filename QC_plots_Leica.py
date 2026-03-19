@@ -19,7 +19,7 @@ tk.Tk().withdraw() # part of the import if you are not using other tkinter funct
 ############################################################
 
 # Input the path to QC folder for a particular date:
-qc_path = r"J:\Equipment\Microscopes\Imaging Facility\Leica_SP8_Matrix_N132\QualityControl\250305"
+qc_path = r"J:\Equipment\Microscopes\Imaging Facility\Leica_SP8_N131\QualityControl\250218"
 
 qc_folder = os.path.dirname(qc_path)
 date_ = qc_path.split("\\")[-1]
@@ -40,11 +40,13 @@ laserpower_files = [file for file in os.listdir(qc_path) if "laserpower.xl" in f
 if len(laserpower_files) > 1:
     print("Multiple laser power files found. Manually input the correct one:")
     filepath = askopenfilename()
+    qcf.plot_laserpower(filepath,  microscope=microscope, date=date_)
 elif len(laserpower_files) == 1:
     filepath = os.path.join(qc_path, laserpower_files[0])
+    qcf.plot_laserpower(filepath,  microscope=microscope, date=date_)
+else:
+    print("No laser power file found")
 
-# run function 
-qcf.plot_laserpower(filepath,  microscope=microscope, date=date_)
 
 ############################################################
 ## Look at laser power over time
@@ -75,7 +77,7 @@ qcf.plot_gain_lin_overtime(qc_folder)
 ############################################################
 ## look at detector_darknoise 
 # Find the file
-darknoise_files = [file for file in os.listdir(qc_path) if "darknoise" in file]
+darknoise_files = [file for file in os.listdir(qc_path) if "darknoise.lif" in file]
 if len(darknoise_files) != 1:
     print("Can't find detector darknoise. Manually input the correct one:")
     filepath = askopenfilename()
@@ -101,7 +103,7 @@ pos2path = os.path.join(qc_path, 'pos2.tif')
 if os.path.isfile(pos1path) and os.path.isfile(pos2path):
     qcf.plot_xy_repos(pos1path, pos2path)
 else:
-    print("Can't find stage repositioning files.n\ Files should be named 'pos1.tif' and 'pos2.tif'.")
+    print("Can't find stage repositioning files.\nFiles should be named 'pos1.tif' and 'pos2.tif'.")
 
 
 
