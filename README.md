@@ -73,6 +73,9 @@ psfeval('file_with_one_PSF_stack.nd2',1,1, 1.7, 1, 1, 0, 1);
 Tested with:
 
 Python 3.11–3.12
+
 MATLAB R2023a
+
 Dependencies for Python code are listed in requirements.txt.
+
 Dependencies for MATLAB code are contained in the MATLAB_PSF folder.
